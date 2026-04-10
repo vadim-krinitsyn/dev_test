@@ -1,1 +1,4 @@
 demoncon
+**/__pycache__/
+*.pyc
+.env
