@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: dev-backend
+    restart: unless-stopped
+    networks:
+      - internal
+
+  nginx:
+    build: ./nginx
+    container_name: dev-nginx
+    ports:
+      - "80:80" # порт снаружи
+    depends_on:
+      backend:
+        condition: service_healthy # ждём статуса healthy
+    restart: unless-stopped
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
+    name: dev_network
