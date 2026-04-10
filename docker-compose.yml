@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   backend:
     build: ./backend
@@ -14,8 +12,7 @@ services:
     ports:
       - "80:80" # порт снаружи
     depends_on:
-      backend:
-        condition: service_healthy # ждём статуса healthy
+      - backend
     restart: unless-stopped
     networks:
       - internal

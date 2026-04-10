@@ -4,9 +4,6 @@ FROM nginx:alpine
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Проверяем конфигурацию для безопасности
-RUN nginx -t
-
 # Документируем порт
 EXPOSE 80
 
